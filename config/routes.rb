@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'blogs' => 'blogs#index'
+  devise_for :users
+
+#  get 'blogs' => 'blogs#index'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do

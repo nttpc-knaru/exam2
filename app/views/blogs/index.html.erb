@@ -2,9 +2,8 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
-
     <h1>ブログ一覧</h1>
-
+    <%= link_to"ブログを作成する",new_blog_path %>
     <% @blogs.each do |blog| %>
       <div class="row">
         <p>タイトル:<%=blog.title %></p>
@@ -15,6 +14,3 @@
     <% end %>
   </div>
 </div>
-
-<br>
-<%=link_to"ブログを作成する",new_blog_path %>
