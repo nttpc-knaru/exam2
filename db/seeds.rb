@@ -17,10 +17,10 @@ end
 
 n = 1
 while n <= 100
-  Blog.create{
+  Blog.create(
     title: "blog_title",
     content: "blog_content",
     user_id: n
-  }
+  )
 n = n + 1
 end
