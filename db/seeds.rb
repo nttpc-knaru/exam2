@@ -15,11 +15,12 @@
               )
 end
 
-100.times do |n|
-  title = "hoge"
-  content = "hogehoge"
-  Blog.create!(title: title,
-               content: content,
-               user_id: n
-              )
+n = 1
+while n <= 100
+  Blog.create{
+    title: "blog_title",
+    content: "blog_content",
+    user_id: n
+  }
+n = n + 1
 end
