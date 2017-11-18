@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :poems, only: [:index, :show]
+
+
 #  get 'blogs' => 'blogs#index'
 
   if Rails.env.development?

@@ -5,6 +5,8 @@ class BlogsController < ApplicationController
   def index
   @blogs = Blog.all
   @users = User.all
+  #binding.pry
+  raise
   end
 
   def new
