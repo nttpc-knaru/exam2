@@ -1,5 +1,8 @@
 <% @poems.each do |poem| %>
-  <%= poem.title %>
-  <%= poem.content %>
+  <div class="row">
+    <p>タイトル: <%= poem.title %></p>
+    <p>コンテンツ: <%= poem.content %></p>
+    <%=link_to"詳細",poem_path(poem.id) %>
+  </div>
 <% end %>
 

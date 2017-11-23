@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'poems/show'
+
   devise_for :users
 
   resources :poems, only: [:index, :show]
