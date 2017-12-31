@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   @blogs = Blog.all
   @users = User.all
   #binding.pry
-  raise
+  #raise
   end
 
   def new
