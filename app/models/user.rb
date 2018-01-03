@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
    unless user
      user = User.new(
-       name: auth.extra.raw_info.name,
+       name: auth.info.nickname,
        provider: auth.provider,
        uid: auth.uid,
        email: "#{auth.uid}-#{auth.provider}@example.com",
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
        password: Devise.friendly_token[0,20]
      )
      user.skip_confirmation!
-     user.save(validate: false)
+     user.save
    end
    user
   end
