@@ -54,6 +54,6 @@ class User < ActiveRecord::Base
   end
 
   def self.create_unique_string
-#    SecureRandom.uuid
+    SecureRandom.uuid
   end
 end
