@@ -1,0 +1,269 @@
+---表紙①
+「KubeCon + CloudNativeCon North America 2017」出張報告
+
+目的：クラウドネイティブなアプリケーションの実行基盤として急速に普及しつつ
+　　　あるkubenetesとそのエコシステムに関する技術動向/業界動向を調査し
+　　　自社サービスおよび自社システム基盤への展開を図る。
+日程：2017年12月6日 - 12月8日
+出張先：アメリカ テキサス オースティン（コンベンションセンター）
+出張者：1テク　成嶋、堀田、林、京極、　サビクリ　藤村
+
+
+---イベント説明②③④
+KubeCon/CloudNativeConとは
+　Linux Foundation傘下の組織であるCloud Native Computing Foundation(CNCF)
+　が主催する「動的にスケジュールされるマイクロサービス指向のモダンな分散システム」
+　を推進するためのイベントであり、2015年から年2回(米国/欧州)で開催されている。
+
+　* Cloud Native Computing Foundatisonとは
+    2015年7月、Docker,CoreOS,RedHat,Google,IBM,Mesosphere,Cisco,Intelなどが主導して発足。
+    それまでGoogleがオープンソースとして公開、開発されてきたコンテナのスケジューラである
+   「Kubernetes」の開発主体をCloud Native Foundationに最初のプロジェクトとして移管。
+
+　　cherter(憲章/目的)
+      https://www.cncf.io/about/charter/
+　　kubenetesを中心とする14のプロジェクトをホストし、クラウドネイティブ界隈の中心
+      https://www.cncf.io/projects/
+      https://qiita.com/tkusumi/items/389bfaa9d5526b2b9bd1
+      http://www.atmarkit.co.jp/ait/articles/1707/22/news010.html
+    メジャーな企業の参画
+      AWS,Google,Microsoftなどクラウド大手やRedHat,Docker,CoreOSといったクラウドテクノロジー
+      関連の主要な企業が参画
+      https://www.cncf.io/about/members/
+      http://jp.techcrunch.com/2017/03/29/20170329cloud-native-computing-foundation-grows-with-new-projects-and-members/
+      https://cloud.watch.impress.co.jp/docs/column/infostand/1076343.html
+      https://www.infoq.com/jp/news/2017/09/aws-joins-cncf
+      http://gihyo.jp/news/report/2016/11/2201
+
+　* Cloud Native Systemsとは
+　　Container packaged
+　　Dynamically managed
+　　Micro-services oriented
+      https://www.cncf.io/about/charter/
+      http://jp.techcrunch.com/2016/08/07/20160803what-real-cloud-native-apps-will-look-like/
+      https://pivotal.io/jp/cloud-native
+      https://www.nri-net.com/products/aws-native-apps/
+      https://martinfowler.com/articles/microservices.html
+      https://www.slideshare.net/iwashi86/micro-service-architecture-46205859
+      https://www.school.ctc-g.co.jp/columns/nakai2/nakai225.html
+
+
+
+---kubenetes説明⑤⑥
+Kubenetes(クバネテス/クゥーバネィテス)とは
+必要性(コンテナ/マイクロサービス/コンテナ管理)
+マイクロサービス化された分散システムでは複数のコンテナでサービスが構成され
+それらの管理には自動化されたコンテナ管理システムが必要です。
+
+Kubenetesはコンテナ化されたアプリケーションのデプロイ・スケーリングなど
+を自動的に行うためのオープンソースのコンテナ・オーケストレーションツール
+です。
+
+効能
+  Automatic binpacking
+    システムリソースを自動調整し、コンテナを自動配置する
+  Horizontal scaling
+    システムリソース消費状況に合わせて自動スケーリング
+  Automated rollouts and rollbacks
+    アプリケーションの自動アップデート、ロールバック
+  Self-healing
+    コンテナの自動復旧、ホスト故障時の再配置
+  Service discovery and Load balancing
+    サービスディスカバリーとロードバランシング
+  Storage orchestration
+    永続ストレージのオーケストレーション
+  Secret and configuration management
+    認証情報やアプリケーション構成情報の管理
+  Batch execution
+    バッチ処理
+
+アーキテクチャ/構成要素
+図を挿入・コンポーネントの役割を記述
+https://github.com/eBay/Kubernetes/blob/master/docs/design/architecture.md
+
+*起源 Google Borg/2014.5 GlueCon(Everything at Google runs in a container)
+  https://www.theregister.co.uk/2014/05/23/google_containerization_two_billion/
+  http://www.publickey1.jp/blog/14/google20.html
+  https://speakerdeck.com/jbeda/containers-at-scale
+  https://www.infoq.com/jp/news/2015/04/google-borg
+  https://research.google.com/pubs/pub43438.html
+*kubenetesの動向
+　kubenetes/Apache Mesos/Docker Swarmなどあるがk8sがデファクトスタンダードとして台頭
+  RedHat OpenShift/Pivotal/CoreOS/Docker/(Rancher)での採用
+
+  2017年9月21日 Kubernetesがコンテナ時代のソフトウェア産業を全面的に支配、大企業もCloud Native Computing Foundationに参集する
+  過去2年ほどはDockerがコンテナの普及に大きく貢献し、コンテナ化されたプログラムを作るための共通的な方法をデベロッパーに提供してきた。
+  そして今では、企業はこれらのコンテナ化されたアプリケーションを“クラウドネイティブ*に”動かすことを欲している…CNCFの事務局長Dan Kohnはそう語る。
+    http://jp.techcrunch.com/2017/09/21/20170920kubernetes-gains-momentum-as-big-name-vendors-join-cloud-native-computing-foundation/
+  2017年3月10日 PivotalとGoogle、Kubenetes向けのリリースエンジニアツール「Kubo」を発表
+    https://mag.osdn.jp/17/03/15/163000
+    http://journal.jp.fujitsu.com/2017/07/13/01/
+    https://thinkit.co.jp/article/12801
+    https://news.mynavi.jp/itsearch/article/devsoft/1712
+    https://www.infoq.com/jp/news/2016/10/cloud-native-operability
+    http://itpro.nikkeibp.co.jp/atcl/column/14/111900104/021600006/
+    https://qiita.com/rrreeeyyy/items/da5931ec0d2d858583cf
+
+
+
+
+---KubeCon/CloudNativeCon内容
+0.前置き⑦⑧⑨⑩
+　　---keyNotes
+       Keynote: A Community of Builders: CloudNativeCon Opening Keynote(https://youtu.be/Z3aBWkNXnhw)
+       Dan Kohn/Executive Director, Cloud Native Computing Foundation
+       Kubenetes is the Linux of the cloud
+       Trend(Google Trends)
+       14 CNCF Projects
+         2016: 4 Projects(Kubenetes, Prometheus, Open Tracing, fluentd)
+         2017: 14 Projects(+ linerd,GRPC,CoreDNS,containerd,rkt,CNI,envoy,jaeger,TUF,notary)
+       cloud native landscape
+       Attendees +4,000
+       KubeCon/CloudNativeCon Sponsors +100
+       22 DIAMOND/PLATINUM Sponsors(Intel,redhat,AWS,Azure,Cisco,IBM,vmware,pivotal,SAP,ORACLE,DELL,AlibabaCloud,HUAWEI,SAMSUNG SDS...)
+       CERTIDIED kubenetes Administrator/kubentest CERTIFIED service providor(25)
+       Cross Cloud,Cross-Project CI(https://github.com/cncf/cross-cloud)
+
+       Keynote: Cloud Native at AWS - Adrian Cockcroft(https://youtu.be/5U-6sxR5DaQ)
+        AWS re:Invent ARC219
+        Cloud Native Prinsiples
+            Pay as you go, afterwords
+            Self Service - no waiting
+            Globally distributed by default
+            Cross-zone/region abailability models
+            High utilization - turn idle resources off
+            Immutable code deployments
+       Amazon ECS, EKS and Fargate
+       63% of Kubenetes workload run on AWA(CNCF survey)
+
+　　---Topics(1-5)⑪
+
+
+1.Container Runtime (hayashi)　⑫
+  containerd 1.0 released
+  cri-o(OCI/CRI)
+    http://www.publickey1.jp/blog/17/kubernetesdockerkubernetescri-o10.html
+  katacontainer
+
+2.Servise mesh/Security (fujimura)　⑬
+  Istio(Envoy)
+   https://qiita.com/Ladicle/items/979d59ef0303425752c8
+   https://mag.osdn.jp/17/05/25/163900
+   http://www.itmedia.co.jp/news/articles/1705/25/news079.html
+   http://www.atmarkit.co.jp/ait/articles/1705/25/news055.html
+   http://jp.techcrunch.com/2017/07/12/20170711buoyant-raises-10-5m-series-a-round-as-it-looks-to-bring-service-meshes-to-the-masses/
+   https://buoyant.io/
+  Notary
+
+3.Observerbility(Monitoring/Logging/Tracing) (narushima)　⑭
+  分散されたコンテナベースのクラウドネイティブなアプリケーションを監視する方法
+  distributed,ephemetal,dynamic,autoscale
+
+   モニタリング：
+                 *Prometheus, datadog
+                  https://adtech.cyberagent.io/techblog/archives/3353
+                  https://www.infoq.com/jp/news/2016/01/dockercon-docker-monitoring
+　　　　　　　　　http://www.publickey1.jp/blog/17/prometheus_20.html
+   ロギング：各マイクロサービスから出力したログを集約して一元管理する
+                 *fluentd, erastic stack
+   トレーシング：分散システムのどのサブシステムでリクエストが処理されたかを追跡する
+                 *JAEGER, *OpenTracing, zipkin
+                  APM:Application Performance Monitoring
+
+   zipkin,open tracing,apache kafka,elastic stack,SPARK,sentiNL
+   jaeger,splunk,fluentd,Prometheus,Grafana
+
+   http://engineer.crowdworks.jp/entry/microservices-architecture-and-deployment#%E5%88%86%E6%95%A3%E3%83%AD%E3%82%AE%E3%83%B3%E3%82%B0
+   https://www.infoq.com/jp/news/2015/07/monitoring-microservices
+   https://japan.zdnet.com/article/35102174/
+   http://inokara.hateblo.jp/entry/2015/08/04/135820
+
+4.Machine Learing/GPU (hotta)　⑮
+
+5.Multi-Cloud/Cross-Cloud (kyougoku)　⑯
+   GKE
+   ECS/EKS/Fargate
+   Azure Container Instances
+      http://techtarget.itmedia.co.jp/tt/news/1604/06/news07.html
+   Private/Hybrid/Public
+
+6.What's NEXT? in 2018　⑰
+  Better = Easier, Faster, Simpler, Happier
+
+  Clayton Coleman
+  Architect, Kubernetes and OpenShift, Red Hat
+    https://youtu.be/lUnD9SJDgo8
+
+  6-1. The year of The Service Mesh
+       Istio/envoy/counduit
+       Make microservices easier
+　6-2. Data for everyone
+       Make data workload easier
+       Machine Learning
+       TensorFlow/rad analytics/GPU/Apache Spark
+　6-3. Whither serverless 
+       Integrate Serverless Nativery
+       OpenWhisk/fission/Kubeless/Function as a Service(FaaS)
+       *CNCF WG-Serverless Whitepaper
+        https://www.slideshare.net/keisuke69/ss-52562743
+　6-4. Defining App
+       Improve App Deployment and Config
+       HELM3.0/kubecfg/ksonnet/kompose/kedge/app-def-wg
+　6-5. Extensible and secure workload identity
+       spiffe/container-identity-wg/kerberos/Istio
+　6-6. Policy,multi-tenancy,Integration
+       open policy agent/LDAP
+　6-7. Better Containers(and VMs)
+       cri-o/containerd/oci/kubevirt/hyperv/debug containers
+
+  github.com
+    appscode/kubed
+    heptio/ark
+    cloudnativelabs/kube-router
+    GoogleCloudPlatform/kube-metacontroller
+
+
+
+
+---社内の取り組み
+　WebARENA コンテナサービス開始　⑱
+　社内利用推進(社内基盤への取り込み)　⑲
+  情報収集/技術習得　⑳
+    *KubeCon+CloudNativeCon North America 2018(Dec 11-13, 2018)
+    *Kubernetes Certified Administrator Exam（Kubernetes認定管理者試験）
+    *Kubernetes Certification Boot Camp with CKA Exam(RX-M), Tokyo - Week of August 6
+
+
+
+
+---コンテナ/kubenetes関連の業界動向
+https://cloud.google.com/containers/
+
+
+---other
+kubenetsとは)
+https://oss.sios.com/yorozu-blog/yorozu-20151216
+https://knowledge.sakura.ad.jp/3681/
+https://qiita.com/advent-calendar/2014/kubernetes
+https://qiita.com/rrreeeyyy/items/da5931ec0d2d858583cf
+https://qiita.com/kazunori279/items/ebe8ea24601e606f8048
+   https://speakerdeck.com/jbeda/containers-at-scale
+https://qiita.com/shouta-dev/items/ad876e6bd256d5d58ebb
+http://www.atmarkit.co.jp/ait/articles/1407/11/news100.html
+https://adtech.cyberagent.io/techblog/archives/1504
+https://www.infoq.com/jp/news/2017/12/service-oriented-development
+http://www.itmedia.co.jp/enterprise/articles/1612/12/news043.html
+
+kubenetesサービス)
+https://adtech.cyberagent.io/techblog/archives/1484
+
+カンファレンス9
+Micoservices Conference
+  http://microxchg.io/2017/index.html#schedule
+DockerCon
+containercon
+kubeCon/CloudNativeCon
+https://qconsf.com/
+https://www.devopsdays.org/
+AWS Dev Day Tokyo
+SREcon17 Asia/Australia

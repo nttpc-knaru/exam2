@@ -1,0 +1,9 @@
+<%= form_for(@uploader,html: {multipart: true}) do |f|  %>
+
+  <%= f.label :image, class: 'form-control'  %>
+  <%= f.file_field :image, class: 'form-control'  %>
+  <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+<% end %>
+<br>
+
+<%= link_to "写真一覧に戻る",uploaders_path %>

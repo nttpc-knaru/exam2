@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :uploaders, only: [:index, :new, :create, :edit,:update, :destroy]
+
   get 'poems/show'
 
   devise_for :users, controllers: {
