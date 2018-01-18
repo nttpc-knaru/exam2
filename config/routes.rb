@@ -1,15 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :uploaders, only: [:index, :new, :create, :edit,:update, :destroy]
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get 'poems/show'
+  resources :uploaders, only: [:index, :new, :create, :edit,:update, :destroy] do
+    collection do
+      post :confirm
+    end
+    member do
+      post :confirm
+    end
+  end
+
+#  get 'poems/show'
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :poems, only: [:index, :show]
+#  resources :poems, only: [:index, :show]
 
 
 #  get 'blogs' => 'blogs#index'
@@ -18,23 +27,23 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
-    member do
-      post :confirm
-    end
-  end
+ # resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+ #   collection do
+ #     post :confirm
+ #   end
+ #   member do
+ #     post :confirm
+ #   end
+ # end
 
-  resources :contacts, only: [:index, :new, :create] do
-    collection do
-      post :confirm
-    end
-    member do
-      post :confirm
-    end
-  end
+ # resources :contacts, only: [:index, :new, :create] do
+ #   collection do
+ #     post :confirm
+ #   end
+ #   member do
+ #     post :confirm
+ #   end
+ # end
 
   root 'top#index'
 

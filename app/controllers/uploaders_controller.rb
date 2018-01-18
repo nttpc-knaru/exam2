@@ -1,4 +1,5 @@
 class UploadersController < ApplicationController
+  before_action :set_uploader, only: [:edit, :update, :destroy]
 
   def index
   @uploaders = Uploader.all
@@ -17,9 +18,10 @@ class UploadersController < ApplicationController
   end
 
   def create
+    #binding.pry
     @uploader=Uploader.create(uploaders_params)
-#    binding.pry
     @uploader.user_id = current_user.id
+    #render :new if @uploader.invalid?
       if @uploader.save
         redirect_to uploaders_path, notice: "写真を投稿しました！"
       else
@@ -55,10 +57,11 @@ class UploadersController < ApplicationController
 
   private
     def uploaders_params
-      params.require(:uploader).permit(:image)
+    binding.pry
+      #params.require(:uploader).permit(:action,:image)
+      params.fetch(:uploader,{}).permit(:image)
     end
     def set_uploader
       @uploader = Uploader.find(params[:id])
     end
-
 end

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-offset-1">
+    <h3>以下の内容で、投稿する。</h3>
+
+    <%= form_for(@uploader) do |f| %>
+      <%= f.hidden_field :image %>
+      <p>写真：<%= @uploader.image %></p>
+      <%= f.submit "投稿する", class: 'btn-primary btn-black' %>
+    <% end %>
+
+    <%= form_for(@uploader, url: new_uploader_path, method: 'get') do |f| %>
+      <%= f.hidden_field :image %>
+      <%= f.submit "戻る", name: 'back', class: 'btn-primary btn-black' %>
+    <% end %>
+
+  </div>
+</div>
